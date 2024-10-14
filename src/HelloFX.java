@@ -1,36 +1,19 @@
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class HelloFX extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // Input fields
-        Label label = new Label("Enter your name :");
-        TextField textField = new TextField();
+       // Load the fxml file
+        Parent root = FXMLLoader.load(getClass().getResource("test.fxml"));
 
-        // Button
-        Button button = new Button("Submit");
-        Label outputLabel = new Label();
-
-
-        // Add an action/event
-        button.setOnAction(e-> outputLabel.setText("Hello,"+textField.getText()+"!"));
-
-        // Using vertical layout
-        VBox layout = new VBox(10);
-        layout.getChildren().addAll(label, textField, button, outputLabel);
-
-        // Make a scene
-        Scene scene = new Scene(layout, 300, 200);
+        Scene scene = new Scene(root,500, 500);
+        stage.setTitle("Using scene builder");
         stage.setScene(scene);
-        stage.setTitle("Simple JavaFx App");
         stage.show();
     }
 
